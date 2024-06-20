@@ -33,11 +33,18 @@ public class Principal {
         funcionarios.add(new Funcionario("Heloísa", LocalDate.parse("24/05/2003", inputFormatter), new BigDecimal("1606.85"), "Eletricista"));
         funcionarios.add(new Funcionario("Helena", LocalDate.parse("02/09/1996", inputFormatter), new BigDecimal("2799.93"), "Gerente"));
 
+        funcionarios.removeIf(funcionario -> funcionario.getNome().equals("João"));
+
+        System.out.println("Nome - Data Nascimento - Salário - Função");
+        System.out.println("----------------------------------------");
+
+        
         for (Funcionario funcionario : funcionarios) {
             String dataFormatada = funcionario.getDataNascimento().format(outputFormatter);
             String salarioFormatado = numberFormat.format(funcionario.getSalario());
 
-            System.out.println(funcionario.getNome() + " - " + dataFormatada + " - " + salarioFormatado + " - " + funcionario.getFuncao());
+            System.out.println(funcionario.getNome() + " - " + dataFormatada + " - " 
+                + salarioFormatado + " - " + funcionario.getFuncao());
         }
     }
 }
