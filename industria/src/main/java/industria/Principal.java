@@ -11,7 +11,7 @@ import java.util.*;
 public class Principal {
 
     public static void main(String[] args) {
-        // Lista de funcionários
+        
         List<Funcionario> funcionarios = new ArrayList<>();
 
         // Formatters para data e número
@@ -31,10 +31,10 @@ public class Principal {
         funcionarios.add(new Funcionario("Heloísa", LocalDate.parse("24/05/2003", inputFormatter), new BigDecimal("1606.85"), "Eletricista"));
         funcionarios.add(new Funcionario("Helena", LocalDate.parse("02/09/1996", inputFormatter), new BigDecimal("2799.93"), "Gerente"));
 
-        // Subpasso 3.2: Remover o funcionário "João"
+        // Remover o funcionário "João"
         funcionarios.removeIf(funcionario -> funcionario.getNome().equals("João"));
 
-        // Subpasso 3.4: Aumentar salário em 10%
+        // Aumentar salário em 10%
         funcionarios.forEach(funcionario -> {
             BigDecimal salarioAtual = funcionario.getSalario();
             BigDecimal aumento = salarioAtual.multiply(BigDecimal.valueOf(0.10));
@@ -42,13 +42,13 @@ public class Principal {
             funcionario.setSalario(novoSalario);
         });
 
-        // Subpasso 3.5: Agrupar funcionários por função em um Map
+        // Agrupar funcionários por função em um Map
         Map<String, List<Funcionario>> funcionariosPorFuncao = new HashMap<>();
         funcionarios.forEach(funcionario -> funcionariosPorFuncao
                 .computeIfAbsent(funcionario.getFuncao(), key -> new ArrayList<>())
                 .add(funcionario));
 
-        // Subpasso 3.6: Imprimir funcionários agrupados por função
+        // Imprimir funcionários agrupados por função
         for (Map.Entry<String, List<Funcionario>> entry : funcionariosPorFuncao.entrySet()) {
             System.out.println("________________________________________");
             System.out.println("Função: " + entry.getKey());
@@ -61,7 +61,7 @@ public class Principal {
             System.out.println();
         }
 
-        // Subpasso 3.8: Imprimir funcionários que fazem aniversário em outubro (mês 10) e dezembro (mês 12)
+        // Imprimir funcionários que fazem aniversário no mês 10 e mês 12
         System.out.println("________________________________________");
         System.out.println("Funcionários com Aniversário em Outubro e Dezembro");
         System.out.println("----------------------------------------");
@@ -73,7 +73,7 @@ public class Principal {
                     System.out.println(funcionario.getNome() + " - " + dataFormatada + " - " + salarioFormatado + " - " + funcionario.getFuncao());
                 });
 
-        // Subpasso 3.9: Imprimir o funcionário com a maior idade
+        // Imprimir o funcionário com a maior idade
         LocalDate dataAtual = LocalDate.now();
         Funcionario funcionarioMaisVelho = null;
         int idadeMaisVelho = Integer.MIN_VALUE;
@@ -102,7 +102,7 @@ public class Principal {
             System.out.println("Não há funcionários na lista.");
         }
 
-        // Subpasso 3.10: Imprimir a lista de funcionários por ordem alfabética
+        // Imprimir a lista de funcionários por ordem alfabética
         List<Funcionario> funcionariosOrdenados = new ArrayList<>(funcionarios);
         Collections.sort(funcionariosOrdenados, Comparator.comparing(Funcionario::getNome));
 
@@ -116,7 +116,7 @@ public class Principal {
         });
         System.out.println();
 
-        // Subpasso 3.11: Imprimir o total dos salários dos funcionários
+        // Imprimir o total dos salários dos funcionários
         BigDecimal totalSalarios = BigDecimal.ZERO;
         for (Funcionario funcionario : funcionarios) {
             totalSalarios = totalSalarios.add(funcionario.getSalario());
@@ -125,7 +125,7 @@ public class Principal {
         System.out.println("Total dos salários dos funcionários: " + currencyFormat.format(totalSalarios));
         System.out.println();
 
-        // Subpasso 3.12: Imprimir quantos salários mínimos ganha cada funcionário
+        // Imprimir quantos salários mínimos ganha cada funcionário
         BigDecimal salarioMinimo = new BigDecimal("1212.00");
         System.out.println("________________________________________");
         System.out.println("Quantidade de salários mínimos que cada funcionário ganha:");
